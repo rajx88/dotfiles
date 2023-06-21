@@ -1,0 +1,74 @@
+### install starship if not exist
+if (( !$+commands[starship] )); then
+   curl -sS https://starship.rs/install.sh | sh
+fi
+
+eval "$(starship init zsh)"
+############################################################
+
+# autoload -U compinit -d $XDG_CACHE_HOME/.zcompdump && compinit -d $XDG_CACHE_HOME/.zcompdump
+fpath=(~/.local/completions $fpath)
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' menu select
+
+setopt complete_aliases
+setopt complete_in_word
+setopt glob_complete
+# Using the AUTOCD option, you can simply type the name of a directory, and it will become the current directory.
+setopt AUTO_CD
+
+setopt EXTENDED_HISTORY
+# share history across multiple zsh sessions
+setopt SHARE_HISTORY
+# append to history
+setopt APPEND_HISTORY
+
+export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
+export HISTSIZE=10000                   # Maximum events for internal history
+export SAVEHIST=10000                   # Maximum events in history file
+
+typeset -U path PATH
+path=($HOME/.local/bin $path)
+path=($path $HOME/bin)
+export PATH
+
+export CDPATH=".:$HOME"
+
+# Do not show PWD after change of path 'via' CDPATH
+alias cd='>/dev/null cd'
+
+if ! type broot > /dev/null; then
+    curl -sS https://dystroy.org/broot/download/x86_64-linux/broot --output ~/.local/bin/broot
+    chmod +x ~/.local/bin/broot
+    broot --install
+fi
+
+# Use antigen to install plugins
+export ADOTDIR="$XDG_CONFIG_HOME/antigen"
+
+if [[ ! -f $ADOTDIR/antigen.zsh ]]; then
+    curl -L git.io/antigen > $ADOTDIR/antigen.zsh
+fi
+
+if [[ -f $ADOTDIR/antigen.zsh ]]; then
+    typeset -a ANTIGEN_CHECK_FILES=($ADOTDIR/antigenrc $ZDOTDIR/.zshrc)
+    source $ADOTDIR/antigen.zsh
+    antigen init $ADOTDIR/antigenrc
+fi
+
+export ZSH_CUSTOM_INCLUDES="${ZDOTDIR}/includes"
+
+if [[ -d "$ZSH_CUSTOM_INCLUDES" ]]; then
+    for file in "$ZSH_CUSTOM_INCLUDES"/.*.zsh; do
+        source "$file"
+    done
+fi
+
+# set vs code as default terminal editor
+#export EDITOR="code -w"
+
+# set vim as default terminal editor
+export EDITOR="vim"
+
+source $XDG_CONFIG_HOME/broot/launcher/bash/br
