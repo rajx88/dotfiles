@@ -1,6 +1,11 @@
+# remap the insiders 
+alias codi="code-insiders"
+
 # zsh file related
 alias szsh="source ${ZDOTDIR}/.zshrc"
-alias czsh="codium ${ZDOTDIR}"
+alias czsh="code ${ZDOTDIR}"
+alias cizsh="codi ${ZDOTDIR}"
+# alias czsh="codium ${ZDOTDIR}"
 
 # Git 
 alias gs="git status"
