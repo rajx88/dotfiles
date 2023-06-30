@@ -31,8 +31,17 @@ export CDPATH=".:$HOME"
 alias cd='>/dev/null cd'
 
 if ! type broot > /dev/null; then
-    curl -sS https://dystroy.org/broot/download/x86_64-linux/broot --output ~/.local/bin/broot
-    chmod +x ~/.local/bin/broot
+    if [[ $(lsb_release -si) == "Ubuntu" ]]; then
+        sudo apt install broot
+    elif [[ $(lsb_release -si) == "Arch" ]]; then
+        sudo paru -S broot
+    elif [[ $(lsb_release -si) == "Fedora" ]]; then
+        sudo dnf install broot
+    else
+        curl -sS https://dystroy.org/broot/download/x86_64-linux/broot --output ~/.local/bin/broot
+        chmod +x ~/.local/bin/broot
+    fi
+    
     broot --install
 fi
 
