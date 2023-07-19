@@ -34,7 +34,7 @@ fi
 [[ ! -f "${ASDF_DIR}/asdf.sh" ]] || . "${ASDF_DIR}/asdf.sh"
 
 # append completions to fpath
-fpath=($fpath ${ASDF_DIR}/completions)
+fpath=($fpath ${ASDF_DIR}/completions ${XDG_CACHE_HOME}/completions)
 
 alias asdfup="asdf plugin update --all"
 
@@ -50,18 +50,15 @@ install_exists true "pipx"
 
 install_exists true "kubectl"
 install_exists true "helm"
+install_exists true "helmfile"
+
 install_exists true "devspace"
 
 install_exists true "nodejs" 
 install_exists true "java" 
 install_exists true "golang"
 
-
-
-
-if type zoxide > /dev/null; then
-  eval "$(zoxide init zsh)"
-fi
+[[ $commands[zoxide] ]] && eval "$(zoxide init zsh)"
 
 # java plugin
 [[ ! -f "${ASDF_DIR}/plugins/java/set-java-home.zsh" ]] || . "${ASDF_DIR}/plugins/java/set-java-home.zsh"
