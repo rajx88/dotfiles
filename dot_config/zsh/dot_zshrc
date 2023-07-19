@@ -31,9 +31,7 @@ export CDPATH=".:$HOME"
 alias cd='>/dev/null cd'
 
 if ! type broot > /dev/null; then
-    if [[ $(lsb_release -si) == "Ubuntu" ]]; then
-        sudo apt install broot
-    elif [[ $(lsb_release -si) == "Arch" ]]; then
+    if [[ $(lsb_release -si) == "Arch" ]]; then
         sudo paru -S broot
     elif [[ $(lsb_release -si) == "Fedora" ]]; then
         sudo dnf install broot
