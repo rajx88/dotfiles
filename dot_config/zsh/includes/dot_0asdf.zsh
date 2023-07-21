@@ -41,12 +41,13 @@ alias asdfup="asdf plugin update --all"
 install_exists true "exa"
 install_exists true "bat"
 install_exists true "ripgrep"
-install_exists true "lazygit"
-install_exists true "fd" 
-install_exists true "fzf" 
+install_exists true "fd"
+install_exists true "fzf"
 install_exists true "zoxide"
 
 install_exists true "pipx"
+
+install_exists true "lazygit"
 
 install_exists true "kubectl"
 install_exists true "helm"
@@ -54,8 +55,8 @@ install_exists true "helmfile"
 
 install_exists true "devspace"
 
-install_exists true "nodejs" 
-install_exists true "java" 
+install_exists true "nodejs"
+install_exists true "java"
 install_exists true "golang"
 
 [[ $commands[zoxide] ]] && eval "$(zoxide init zsh)"
