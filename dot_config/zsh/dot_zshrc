@@ -30,10 +30,12 @@ export CDPATH=".:$HOME"
 # Do not show PWD after change of path 'via' CDPATH
 alias cd='>/dev/null cd'
 
-if ! type broot > /dev/null; then
-    if [[ $(lsb_release -si) == "Arch" ]]; then
+distro=$(lsb_release -si) 
+
+if [[ ! $commands[broot] ]]; then
+    if [[ $distro == "Arch" || $distro == "EndeavourOS" ]]; then
         sudo paru -S broot
-    elif [[ $(lsb_release -si) == "Fedora" ]]; then
+    elif [[ $distro == "Fedora" ]]; then
         sudo dnf install broot
     else
         curl -sS https://dystroy.org/broot/download/x86_64-linux/broot --output ~/.local/bin/broot
@@ -41,6 +43,21 @@ if ! type broot > /dev/null; then
     fi
     
     broot --install
+fi
+
+if [[ ! $commands[nvim] ]]; then
+    if [[ $distro == "Arch" || $distro == "EndeavourOS" ]]; then
+        echo "Installing neovim via paru"
+        sudo paru -S neovim 
+    elif [[ $distro == "Fedora" ]]; then
+        sudo dnf install neovim
+    elif [[ $distro == "Ubuntu" ]]; then
+        sudo apt install neovim
+    else
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+        chmod u+x nvim.appimage\
+        sudo mv nvim.appimage $HOME/.local/bin/nvim
+    fi
 fi
 
 # Use antigen to install plugins
