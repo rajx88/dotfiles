@@ -85,7 +85,7 @@ fi
 #export EDITOR="code -w"
 
 # set vim as default terminal editor
-export EDITOR="vim"
+export EDITOR="nvim"
 
 source $XDG_CONFIG_HOME/broot/launcher/bash/br
 
