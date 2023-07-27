@@ -33,7 +33,10 @@ alias cd='>/dev/null cd'
 distro=$(lsb_release -si) 
 
 if [[ ! $commands[broot] ]]; then
-    if [[ $distro == "Arch" || $distro == "EndeavourOS" ]]; then
+    echo "trying to install broot" 
+    if [[ -z "${distro}" ]]; then
+        echo "do nothing because lsb_release is not installed"
+    elif [[ $distro == "Arch" || $distro == "EndeavourOS" ]]; then
         sudo paru -S broot
     elif [[ $distro == "Fedora" ]]; then
         sudo dnf install broot
@@ -46,7 +49,10 @@ if [[ ! $commands[broot] ]]; then
 fi
 
 if [[ ! $commands[nvim] ]]; then
-    if [[ $distro == "Arch" || $distro == "EndeavourOS" ]]; then
+    echo "trying to install neovim" 
+    if [[ -z "${distro}" ]]; then
+        echo "do nothing because lsb_release is not installed"
+    elif [[ $distro == "Arch" || $distro == "EndeavourOS" ]]; then
         echo "Installing neovim via paru"
         sudo paru -S neovim 
     elif [[ $distro == "Fedora" ]]; then
@@ -85,7 +91,15 @@ fi
 #export EDITOR="code -w"
 
 # set vim as default terminal editor
-export EDITOR="nvim"
+if [[ $commands[nvim] ]]; then
+    export EDITOR="nvim"
+elif [[ $commands[vim] ]]; then
+    export EDITOR="vim"
+elif [[ $commands[code] ]]; then
+    export EDITOR="code -w"
+elif [[ $commands[vi] ]]; then
+    export EDITOR="vi"
+fi
 
 source $XDG_CONFIG_HOME/broot/launcher/bash/br
 
