@@ -68,7 +68,7 @@ source $XDG_CONFIG_HOME/broot/launcher/bash/br
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 ### install starship if not exist
-if (( !$+commands[starship] )); then
+if [[ ! $commands[starship] ]]; then
   curl -sS https://starship.rs/install.sh | sh
 fi
 
