@@ -1,5 +1,5 @@
--- Pull in the wezterm API
-local wezterm = require 'wezterm'
+--Pull in the wezterm API
+local wezterm = require "wezterm"
 
 -- see https://wezfurlong.org/wezterm/config/lua/wezterm/target_triple.html for values
 local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu"
@@ -16,18 +16,19 @@ end
 
 -- This is where you actually apply your config choices
 -- For example, changing the color scheme:
--- config.color_scheme = 'AdventureTime'
+-- config.color_scheme = "AdventureTime"
 
 config.window_background_opacity = 0.9
 config.font = wezterm.font_with_fallback {
-  'CaskaydiaCove Nerd Font',
-  'JetBrains Mono',
-  'Hack Nerd Font',
-  'Hack',
-  'DejaVu Sans Mono',
-  'Noto Sans Mono',
-  'monospace',
+  "CaskaydiaCove Nerd Font",
+  "JetBrains Mono",
+  "Hack Nerd Font",
+  "Hack",
+  "DejaVu Sans Mono",
+  "Noto Sans Mono",
+  "monospace",
 }
+config.window_close_confirmation = "NeverPrompt"
 -- hide tab bar if only one tab is open
 config.hide_tab_bar_if_only_one_tab = true 
 -- set arch as wsl distro and load it by default
