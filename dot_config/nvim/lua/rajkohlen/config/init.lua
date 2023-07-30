@@ -1,0 +1,6 @@
+require("rajkohlen.config.completion")
+require("rajkohlen.config.harpoon")
+require("rajkohlen.config.lsp")
+require("rajkohlen.config.telescope")
+require("rajkohlen.config.treesitter")
+require("rajkohlen.config.undotree")
