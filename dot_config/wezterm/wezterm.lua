@@ -1,5 +1,11 @@
 --Pull in the wezterm API
 local wezterm = require "wezterm"
+local mux = wezterm.mux
+
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 -- see https://wezfurlong.org/wezterm/config/lua/wezterm/target_triple.html for values
 local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu"
