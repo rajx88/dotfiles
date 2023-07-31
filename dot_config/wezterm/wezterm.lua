@@ -3,7 +3,7 @@ local wezterm = require "wezterm"
 local mux = wezterm.mux
 
 wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
+  local window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
 
@@ -24,6 +24,11 @@ end
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
 
+-- Setting text color
+config.colors = {
+  foreground = "#FFFFFF"
+}
+-- set background opacity
 config.window_background_opacity = 0.8
 config.font = wezterm.font_with_fallback {
   "CaskaydiaCove Nerd Font",
