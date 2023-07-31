@@ -24,10 +24,12 @@ end
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
 
+config.colors = require('lua/rose-pine').colors()
+
 -- Setting text color
-config.colors = {
-  foreground = "#FFFFFF"
-}
+--config.colors = {
+--  foreground = "#FFFFFF"
+--}
 -- set background opacity
 config.window_background_opacity = 0.8
 config.font = wezterm.font_with_fallback {
