@@ -1,4 +1,4 @@
-require("rajkohlen.config.completion")
+require("rajkohlen.config.cmp")
 require("rajkohlen.config.harpoon")
 require("rajkohlen.config.lsp")
 require("rajkohlen.config.telescope")
