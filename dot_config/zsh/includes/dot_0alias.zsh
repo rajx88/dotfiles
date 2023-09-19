@@ -48,13 +48,13 @@ alias kw="k get pods --watch"
 alias wk="watch -n 2 kubectl get pods"
 alias wkn="watch -n 2 kubectl get pods --namespace"
 
-###         exa         ###
-if (( $+commands[exa] )); then
+###         eza         ###
+if (( $+commands[eza] )); then
     # ls
-    alias ls="exa --icons"
-    # alias ll="exa --icons --group-directories-first -al"
-    alias ll="exa --icons -abghHliS"
-    alias tree="exa --icons --tree -abghHliS"
+    alias ls="eza --icons"
+    # alias ll="eza --icons --group-directories-first -al"
+    alias ll="eza --icons -abghHliS"
+    alias tree="eza --icons --tree -abghHliS"
 else
     alias ll="ls -al"
 fi
