@@ -20,5 +20,3 @@ vim.keymap.set("n", "<M-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<M-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<M-l>", "<C-w>l", opts)
 
--- nvimtree
-vim.keymap.set("n", "<M-e>", ":NvimTreeToggle<cr>", opts)
