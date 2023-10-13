@@ -4,6 +4,8 @@ return {
     lazy = false,
     dependencies = {"nvim-tree/nvim-web-devicons"},
     config = function ()
-       vim.keymap.set("n", "<M-e>", ":NvimTreeToggle<cr>", { silent = true })
+      require("nvim-tree").setup(){
+         vim.keymap.set("n", "<M-e>", ":NvimTreeToggle<cr>", { silent = true })
+      }
     end
 }
