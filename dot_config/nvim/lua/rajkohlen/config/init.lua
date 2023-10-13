@@ -1,7 +1,0 @@
-require("rajkohlen.config.cmp")
-require("rajkohlen.config.harpoon")
-require("rajkohlen.config.lsp")
-require("rajkohlen.config.telescope")
-require("rajkohlen.config.treesitter")
-require("rajkohlen.config.undotree")
-require("rajkohlen.config.tree")
