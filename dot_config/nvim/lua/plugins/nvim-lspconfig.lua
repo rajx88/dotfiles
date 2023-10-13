@@ -10,7 +10,7 @@ return {
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
@@ -59,7 +59,12 @@ return {
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
-    
+
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
     end
 
     -- Enable the following language servers
