@@ -3,6 +3,9 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    -- 'nvim-treesitter/playground',
+    'nvim-treesitter/nvim-treesitter-refactor',
+    'windwp/nvim-ts-autotag',
   },
   build = ':TSUpdate',
   config = function()
@@ -10,22 +13,22 @@ return {
     -- See `:help nvim-treesitter`
     require("nvim-treesitter.configs").setup {
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 
+      ensure_installed = {
         "go",
         "java",
-        "lua", 
-        "python", 
+        "lua",
+        "python",
         "rust",
-        "tsx", 
-        "typescript", 
-        "vimdoc", 
-        "vim", 
-        "yaml" 
-        },
-
+        "tsx",
+        "typescript",
+        "vimdoc",
+        "vim",
+        "yaml"
+      },
       -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = true,
-
+      sync_install = true,
+      ignore_install = {},
       highlight = { enable = true },
       indent = { enable = true },
       incremental_selection = {
@@ -35,6 +38,29 @@ return {
           node_incremental = "<c-space>",
           scope_incremental = "<c-s>",
           node_decremental = "<M-space>",
+        },
+      },
+      autotag = {
+        enable = true,
+      },
+      refactor = {
+        smart_rename = {
+          enable = true,
+          -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+          keymaps = {
+            smart_rename = "grr",
+          },
+        },
+        navigation = {
+          enable = true,
+          -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+          keymaps = {
+            goto_definition = "gnd",
+            list_definitions = "gnD",
+            list_definitions_toc = "gO",
+            goto_next_usage = "<a-*>",
+            goto_previous_usage = "<a-#>",
+          },
         },
       },
       textobjects = {
