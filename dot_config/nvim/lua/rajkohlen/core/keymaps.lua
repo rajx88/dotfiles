@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- [[ Basic Keymaps ]]
--- Keymaps for better default experience
+-- Keymaps for better default experience:q
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', opts)
 
@@ -20,3 +20,8 @@ vim.keymap.set("n", "<M-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<M-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<M-l>", "<C-w>l", opts)
 
+vim.keymap.set("n", "<C-s>", ":w<CR>", opts)
+vim.keymap.set("n", "\\", ":vsplit<CR>", opts)
+vim.keymap.set("n", "-", ":split<CR>", opts)
+vim.keymap.set("n", "<Leader>bn", ":bnext<CR>", opts)
+vim.keymap.set("n", "<Leader>bb", ":bprev<CR>", opts)
