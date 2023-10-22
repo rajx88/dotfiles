@@ -77,12 +77,12 @@ return {
     --  define the property 'filetypes' to the map in question.
     local servers = {
       -- clangd = {},
-      gopls = {},
+      -- gopls = {},
       -- pyright = {},
-      rust_analyzer = {},
+      -- rust_analyzer = {},
       -- tsserver = {},
       -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-      yaml = {},
+      -- yaml = {},
 
 
       lua_ls = {
