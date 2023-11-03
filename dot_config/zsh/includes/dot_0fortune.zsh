@@ -25,6 +25,5 @@ install_package() {
 }
 
 install_package "cowsay"
-install_package "lolcat"
 install_package "fortune" "fortune-mod"
 
