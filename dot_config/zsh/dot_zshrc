@@ -62,7 +62,7 @@ elif [[ $commands[vi] ]]; then
     export EDITOR="vi"
 fi
 
-fortune | cowsay -f dragon | lolcat
+fortune | cowsay -f flaming-sheep 
 
 source $XDG_CONFIG_HOME/broot/launcher/bash/br
 
