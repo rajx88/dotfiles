@@ -7,7 +7,7 @@ return {
     require("nvim-tree").setup {
       filters = {
         dotfiles = false,
-        custom = { ".git" },
+        custom = {},
       },
       vim.keymap.set("n", "<M-e>", ":NvimTreeToggle<cr>", { silent = true }),
     }

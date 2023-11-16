@@ -5,17 +5,22 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    { 'williamboman/mason.nvim', config = true },
+    'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
   },
   config = function()
+    -- mason-lspconfig requires that these setup functions are called in this order
+    -- before setting up the servers.
+    require('mason').setup()
+    require('mason-lspconfig').setup()
+
     -- [[ Configure LSP ]]
     -- This function gets run when an LSP connects to a particular buffer.
     local on_attach = function(_, bufnr)
@@ -36,10 +41,10 @@ return {
       nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
       nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-      nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+      nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
       nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-      nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-      nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+      nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+      nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
       nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
       nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
