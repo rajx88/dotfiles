@@ -50,6 +50,7 @@ install_exists true "pipx"
 install_exists true "lazygit"
 
 install_exists true "kubectl"
+install_exists true "kubectx"
 install_exists true "helm"
 install_exists true "helmfile"
 install_exists true "dagger"
